@@ -1,5 +1,8 @@
 class Pokemon
+<<<<<<< HEAD
   
+=======
+>>>>>>> b15596e6533708ab22a80e2cbac789ca49243bfb
   attr_accessor :name, :type, :db
   attr_reader :id
   
@@ -21,11 +24,16 @@ class Pokemon
     @id = db.execute("SELECT last_insert_rowid() FROM pokemon")[0][0] 
   end
 
+<<<<<<< HEAD
   def self.find(id, db)
+=======
+  def self.find(id)
+>>>>>>> b15596e6533708ab22a80e2cbac789ca49243bfb
     sql = <<-SQL
       SELECT *
       FROM pokemon
       WHERE id = ?
+<<<<<<< HEAD
       LIMIT 1
     SQL
     
@@ -34,4 +42,14 @@ class Pokemon
     Pokemon.new(id:result[0], name:result[1], type:result[2], db:db)
   end
   
+=======
+    SQL
+    
+    result = db.execute(sql, id)
+    id = result[0]
+    name =  result[1]
+    type = result[2]
+    self.new(id, name, type)
+  end
+>>>>>>> b15596e6533708ab22a80e2cbac789ca49243bfb
 end
